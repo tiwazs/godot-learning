@@ -11,53 +11,53 @@
 [ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://white_color_shader.shader" type="Shader" id=10]
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 10 )
 shader_param/active = false
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 16, 24 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "AnimationFly",
 "speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 3.72486
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 6.14918
 height = 3.74326
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 48.8296
-
 [sub_resource type="CircleShape2D" id=10]
-radius = 4.37501
+radius = 90.9258
 
 [sub_resource type="CircleShape2D" id=11]
+radius = 4.37501
+
+[sub_resource type="CircleShape2D" id=12]
 radius = 6.27715
 
 [sub_resource type="Animation" id=13]
@@ -98,9 +98,9 @@ collision_layer = 2147483664
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 12 )
+material = SubResource( 1 )
 position = Vector2( 0.0883884, 0 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "AnimationFly"
 frame = 2
 playing = true
@@ -111,24 +111,23 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -0.0406303, -12.955 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 max_health = 2
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 position = Vector2( 0, -10.9602 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 visible = false
@@ -138,12 +137,12 @@ collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 3.8147e-06, -15.2028 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="WanderController" parent="." instance=ExtResource( 9 )]
 
